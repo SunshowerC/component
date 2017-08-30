@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<style>
+    
+    .w-tooltip {
+    	position: relative;
+    }
+
+	/* 小三角 */
+    .w-tooltip::before {
+    	content: '';
+    	position: absolute;
+        left: 50%;
+        bottom:  100%;
+        transform: translate(-50%,5px);
+
+        width: 0;
+        height: 0;
+
+        border: 8px solid transparent;
+        border-top-color: #1f2d3d;
+        pointer-events: none;
+
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+ 
+ 	.w-tooltip.w-dark::after {
+ 		background-color: #1f2d3d;
+ 		color: #fff;
+ 	}
+
+    .w-tooltip::after {
+    	content: attr(data-tooltip);
+
+    	position: absolute;
+        left: 50%;
+        bottom:  100%;
+		
+        transform: translate(-50%, -10px);
+
+    	width: 160px;
+        padding: 5px 15px;
+		border: 1px solid #1f2d3d;
+        border-radius: 4px;
+
+        background: #fff;
+        color: #1f2d3d;
+        font-size: 12px;
+		pointer-events: none;
+
+        opacity: 0;
+
+        transition: opacity 0.4s ease;
+    }
+  
+    .w-tooltip:hover::after {  opacity: 1;  }
+    .w-tooltip:hover::before  { opacity: 1;   }
+</style>
+
+<style scoped >
+	
+	.box {
+		width: 100px;
+
+		height: 100px; 
+		background-color: #ff0000	; 
+		position: fixed; left: 100px; top: 400px;
+	}
+</style>
+
+<div style="margin: 100px auto; width: 300px;">
+
+ 
+	<span  class="w-tooltip w-dark" 
+	data-tooltip="鼠标悬浮在我身上试试鼠标悬浮在我身上试试鼠标悬浮在我身上试试" href="">鼠标悬浮在我身上试试</span>
+
+</div>
+
+<div class='box w-tooltip' data-tooltip="鼠标悬浮在我身上试试鼠标悬浮在我身上试试鼠标悬浮在我身上试试"></div>
+</body>
+</html>
