@@ -58,6 +58,10 @@
 
         transition: opacity 0.4s ease;
     }
+
+	.w-tooltip.w-show::before, .w-tooltip.w-show::after {
+		opacity: 1;
+	}
   
     .w-tooltip:hover::after {  opacity: 1;  }
     .w-tooltip:hover::before  { opacity: 1;   }
@@ -77,8 +81,9 @@
 <div style="margin: 100px auto; width: 300px;">
 
  
-	<span  class="w-tooltip w-dark" 
-	data-tooltip="鼠标悬浮在我身上试试鼠标悬浮在我身上试试鼠标悬浮在我身上试试" href="">鼠标悬浮在我身上试试</span>
+	<span  class="w-tooltip w-dark w-show"
+	data-tooltip="w-tooltip:建立； w-dark：背景颜色，不设则为白色； w-show：设置了则一直显示，不设置，hover时显示" href="">
+		鼠标悬浮在我身上试试</span>
 
 </div>
 
