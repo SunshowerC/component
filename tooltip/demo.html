@@ -3,18 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+
+    <link rel="stylesheet" href="./scss/tooltip.css">
 </head>
 <body>
-<style>
+<!-- <style>
     
     .w-tooltip {
-    	position: relative;
+        position: relative;
     }
 
-	/* 小三角 */
+    /* 小三角 */
     .w-tooltip::before {
-    	content: '';
-    	position: absolute;
+        content: '';
+        position: absolute;
         left: 50%;
         bottom:  100%;
         transform: translate(-50%,5px);
@@ -30,42 +32,49 @@
         transition: opacity 0.4s ease;
     }
  
- 	.w-tooltip.w-dark::after {
- 		background-color: #1f2d3d;
- 		color: #fff;
- 	}
-
+     .w-tooltip.w-dark::after {
+         background-color: #1f2d3d;
+         color: #fff;
+     }
+    
+    /* tooltip 框 */
     .w-tooltip::after {
-    	content: attr(data-tooltip);
+        content: attr(data-tooltip);
 
-    	position: absolute;
+        position: absolute;
         left: 50%;
         bottom:  100%;
-		
+        
         transform: translate(-50%, -10px);
 
-    	width: 160px;
+        width: 160px;
         padding: 5px 15px;
-		border: 1px solid #1f2d3d;
+        border: 1px solid #1f2d3d;
         border-radius: 4px;
 
         background: #fff;
         color: #1f2d3d;
         font-size: 12px;
-		pointer-events: none;
+        pointer-events: none;
 
         opacity: 0;
 
         transition: opacity 0.4s ease;
     }
 
-	.w-tooltip.w-show::before, .w-tooltip.w-show::after {
-		opacity: 1;
-	}
+    .w-tooltip.w-tooltip--bottom {
+        
+    }
+
+
+
+    .w-tooltip.w-show::before, .w-tooltip.w-show::after {
+        opacity: 1;
+    }
   
     .w-tooltip:hover::after {  opacity: 1;  }
     .w-tooltip:hover::before  { opacity: 1;   }
-</style>
+</style> -->
 
 <style scoped >
 	
@@ -78,15 +87,29 @@
 	}
 </style>
 
-<div style="margin: 100px auto; width: 300px;">
 
- 
-	<span  class="w-tooltip w-dark w-show"
+<div style="margin: 100px auto; width: 300px;">
+        <span  class="w-tooltip w-tooltip--left  w-show"
+    data-tooltip="w-tooltip:建立； w-dark：背景颜色，不设则为白色； w-show：设置了则一直显示，不设置，hover时显示" href="">
+        left</span>
+
+        <span  class="w-tooltip w-tooltip--right  w-show"
+    data-tooltip="w-tooltip:建立； w-dark：背景颜色，不设则为白色； w-show：设置了则一直显示，不设置，hover时显示" href="">
+        right</span>
+
+        <br><br><br><br><br><br><br>
+
+    <span  class="w-tooltip  w-dark w-show"
+    data-tooltip="w-tooltip:建立； w-dark：背景颜色，不设则为白色； w-show：设置了则一直显示，不设置，hover时显示" href="">
+        默认top</span>
+    <br>
+	<span  class="w-tooltip w-tooltip--bottom w-dark w-show"
 	data-tooltip="w-tooltip:建立； w-dark：背景颜色，不设则为白色； w-show：设置了则一直显示，不设置，hover时显示" href="">
-		鼠标悬浮在我身上试试</span>
+		bottom</span>
+
 
 </div>
 
-<div class='box w-tooltip' data-tooltip="鼠标悬浮在我身上试试鼠标悬浮在我身上试试鼠标悬浮在我身上试试"></div>
+<div class='box w-tooltip w-tooltip--right' data-tooltip="鼠标悬浮在我身上试试鼠标悬浮在我身上试试鼠标悬浮在我身上试试"></div>
 </body>
 </html>
