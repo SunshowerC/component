@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+<div id="addDialog" class="w-dialog__wrapper">
+    <div class="w-dialog">
+        <header class="w-dialog__header">
+            <span>头部</span><i data-dismiss class="fa fa-times fa-lg" aria-hidden="true"></i>
+        </header>
+        <div class="w-dialog__body">
+            <form id="add-form" >
+                <input type="hidden" name="id" disabled value="">
+                <input type="hidden" name="groupCode" value="operation_platform">
+                系统代码：<input required name="code" type="text"> <br>
+                系统名称：<input required name="name" type="text"><br>
+                系统URL：<input  required name="url" type="text"><br>
+                系统图标：<input required name="iconFile" type="file"><br>
+                <input name="icon" type="hidden" disabled >
+                <img src="" alt="" class="modify-btn" width="80">
+                系统描述：<input  required name="desc" type="text"><br>
+
+                <input style="display: none" type="submit" class="submit" >
+            </form>
+        </div>
+        <footer class="w-dialog__footer">
+            <button id="modify-btn" class="w-button w-button--primary modify-btn">修改</button>
+            <button id="add-btn" class="w-button w-button--primary add-btn">添加</button>
+            <button class="w-button   " data-dismiss>取消</button>
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>
