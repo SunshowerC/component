@@ -19,7 +19,7 @@ import {$, isDom, bindEvent} from './public';
 export default class Dialog {
     constructor({ container, handleClose, handleOpen  }) {
         let defaultOpt = {
-            closeSelector: '[data-dismiss]'
+            closeSelector: '[data-dismiss]',
         }
 
         Object.assign(this, defaultOpt);
@@ -29,8 +29,9 @@ export default class Dialog {
         this.handleOpen = handleOpen;
 
         this.transitionDuration = parseFloat( getComputedStyle(this.container).transitionDuration ) * 1000;
-        console.log(this.transitionDuration)
+
         this.init();
+
 
     }
 
@@ -50,12 +51,17 @@ export default class Dialog {
 
     open() {
         this.container.style.display = `block`;
-        setTimeout(()=> this.container.style.opacity = `1`, 0);
+        setTimeout(()=>{
+            // this.container.style.opacity = `1`;
+            this.container.classList.add('open');
+        }, 0);
         this.handleOpen && this.handleOpen();
     }
 
     close() {
-        this.container.style.opacity = `0`;
+        // this.container.style.opacity = `0`;
+        this.container.classList.remove('open');
+
         setTimeout(()=> this.container.style.display = `none`, this.transitionDuration);
         this.handleClose && this.handleClose();
     }
@@ -64,3 +70,58 @@ export default class Dialog {
         this.bind();
     }
 }
+
+
+/*
+
+function Dialog({ container, handleClose, handleOpen  }) {
+    let defaultOpt = {
+        closeSelector: '[data-dismiss]'
+    }
+
+    Object.assign(this, defaultOpt);
+
+    this.container = isDom(container) ? container : document.querySelector(container);
+    this.handleClose = handleClose;
+    this.handleOpen = handleOpen;
+
+    this.transitionDuration = parseFloat( getComputedStyle(this.container).transitionDuration ) * 1000;
+    console.log(this.transitionDuration)
+    this.init();
+}
+
+Dialog.prototype.bind = function() {
+    let This = this;
+    let allDismissElem = $.all(this.closeSelector, this.container);
+    allDismissElem.forEach(item => {
+        bindEvent({
+            elem: item,
+            event: 'click',
+            callback() {
+                This.close();
+            }
+        })
+    })
+}
+
+Dialog.prototype.open = function() {
+    this.container.style.display = `block`;
+    setTimeout(()=>{
+        // this.container.style.opacity = `1`;
+        this.container.classList.add('open');
+    }, 0);
+    this.handleOpen && this.handleOpen();
+}
+
+Dialog.prototype.close = function() {
+    // this.container.style.opacity = `0`;
+    this.container.classList.remove('open');
+
+    setTimeout(()=> this.container.style.display = `none`, this.transitionDuration);
+    this.handleClose && this.handleClose();
+}
+
+Dialog.prototype.init = function() {
+    this.bind();
+}
+*/
